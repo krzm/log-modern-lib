@@ -1,4 +1,4 @@
-using Core;
+using DotNetExtension;
 
 namespace Log.Modern.Lib;
 

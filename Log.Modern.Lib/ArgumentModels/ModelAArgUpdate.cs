@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using CommandDotNet;
-using Core;
+using ModelHelper;
 
 namespace Log.Modern.Lib;
 
