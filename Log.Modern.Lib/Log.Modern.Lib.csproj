@@ -13,18 +13,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Reference Include="CLIWizardHelper">
-			<HintPath>..\..\build\Build\cli-wizard-helper\CLIWizardHelper\CLIWizardHelper.dll</HintPath>
-		</Reference>
-		<Reference Include="CLIFramework">
-			<HintPath>..\..\build\Build\cli-framework\CLIFramework\CLIFramework.dll</HintPath>
-		</Reference>
-		<Reference Include="Log.Data">
-			<HintPath>..\..\build\Build\log-data\Log.Data\Log.Data.dll</HintPath>
-		</Reference>
-		<Reference Include="Log.Modern.Lib">
-			<HintPath>..\..\build\Build\log-modern-lib\Log.Modern.Lib\Log.Modern.Lib.dll</HintPath>
-		</Reference>
 		<Reference Include="CLIHelper">
 			<HintPath>..\..\build\Build\cli-helper\CLIHelper\CLIHelper.dll</HintPath>
 		</Reference>
@@ -42,6 +30,9 @@
 		</Reference>
 		<Reference Include="DataToTable">
 			<HintPath>..\..\build\Build\datatotable\DataToTable\DataToTable.dll</HintPath>
+		</Reference>
+		<Reference Include="Log.Data">
+			<HintPath>..\..\build\Build\log-data\Log.Data\Log.Data.dll</HintPath>
 		</Reference>
   </ItemGroup>
 </Project>
