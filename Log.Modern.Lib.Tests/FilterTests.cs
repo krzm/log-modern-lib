@@ -53,11 +53,11 @@ public class TaskFilterTests
     }
 
     [Theory]
-    [InlineData(2, 1, "you shall not pass", "you my go", false)]
     [InlineData(1, 1, "you my go", "you my go", true)]
-    [InlineData(1, 1, "you shall not pass", "you my go", true)]
-    [InlineData(2, 1, "you my go", "you my go", true)]
-    public void TestIdOrNameFilter(
+    [InlineData(2, 1, "you shall not pass", "you my go", false)]
+    [InlineData(1, 1, "you shall not pass", "you my go", false)]
+    [InlineData(2, 1, "you my go", "you my go", false)]
+    public void TestIdAndNameFilter(
         int id
         , int? filterId
         , string name
