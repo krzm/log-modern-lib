@@ -27,13 +27,4 @@ public class TaskReadCommand
             , orderBy: t => t.OrderBy(p => p.Category.Name)
             , includeProperties: "Category").ToList();
     }
-
-    // private static Expression<Func<Data.Task, bool>>? GetFilter(TaskArgFilter filter)
-    // {
-    //     if(filter.CategoryId.HasValue && string.IsNullOrWhiteSpace(filter.Name) == false)
-    //     {
-    //         return task => task.CategoryId == filter.CategoryId.Value && 
-    //     }
-    //     return filter.CategoryId.HasValue ? f => f.CategoryId == filter.CategoryId.Value : null;
-    // }
 }
