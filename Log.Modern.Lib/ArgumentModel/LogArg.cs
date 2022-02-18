@@ -17,9 +17,9 @@ public class  LogArg : IArgumentModel
     [Operand(nameof(PlaceId)), Required, Range(1, int.MaxValue, ErrorMessage = IdError)]
     public int PlaceId { get; set; } = 1;    
 
-    [Operand(nameof(Start), Description = DateFormat), Required]
-    public DateTime Start { get; set; } = DateTime.Now;
+    [Operand(nameof(Start), Description = DateFormat)]
+    public DateTime? Start { get; set; } = DateTime.Now;
 
     [Operand(nameof(End), Description = DateFormat)]
-    public DateTime? End { get; set; } = default;    
+    public DateTime? End { get; set; }    
 }

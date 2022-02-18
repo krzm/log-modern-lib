@@ -31,18 +31,33 @@ public class LogTableProvider : TextTable<LogModel>
 	}
 
 	protected override void CreateTableRow(LogModel log)
-	{
-		AddValue(GetColumnData(nameof(LogModel.Id)), log.Id.ToString());
-		AddValue(GetColumnData(nameof(LogModel.Task)), log.Task.Name);
-		AddValue(GetColumnData(nameof(LogModel.TaskId)), log.TaskId.ToString());
-		AddValue(GetColumnData(nameof(LogModel.Start)), log.Start.ToString(DateTimeFormat1));
-		AddValue(GetColumnData(nameof(LogModel.End)), log.End.HasValue ? log.End.Value.ToString(DateTimeFormat2) : "");
-		//AddValue(GetColumnData(nameof(LogModel.Time)), $"{e.Time.Hours}:{e.Time.Minutes}");
-		AddValue(GetColumnData(nameof(LogModel.Description)), string.IsNullOrWhiteSpace(log.Description) == false ? log.Description : "");
-		AddValue(GetColumnData(nameof(LogModel.Place)), log.Place.Name);
-	}
+    {
+        AddValue(GetColumnData(nameof(LogModel.Id)), log.Id.ToString());
+        AddValue(GetColumnData(nameof(LogModel.Task)), log.Task.Name);
+        AddValue(GetColumnData(nameof(LogModel.TaskId)), log.TaskId.ToString());
+        AddValue(GetColumnData(nameof(LogModel.Start)), GetStart(log));
+        AddValue(GetColumnData(nameof(LogModel.End)), GetEnd(log));
+        //AddValue(GetColumnData(nameof(LogModel.Time)), $"{e.Time.Hours}:{e.Time.Minutes}");
+        AddValue(GetColumnData(nameof(LogModel.Description)), GetDescription(log));
+        AddValue(GetColumnData(nameof(LogModel.Place)), log.Place.Name);
+    }
 
-	protected override void SetColumnsSize(List<LogModel> logs)
+    private static string GetStart(LogModel log)
+    {
+        return log.Start.HasValue ? log.Start.Value.ToString(DateTimeFormat1) : "";
+    }
+
+    private static string GetEnd(LogModel log)
+    {
+        return log.End.HasValue ? log.End.Value.ToString(DateTimeFormat2) : "";
+    }
+
+	private static string GetDescription(LogModel log)
+    {
+        return string.IsNullOrWhiteSpace(log.Description) == false ? log.Description : "";
+    }
+
+    protected override void SetColumnsSize(List<LogModel> logs)
 	{
 		SetColumn(nameof(LogModel.Id), GetIdsLength(logs));
 		SetColumn(nameof(LogModel.Task), GetTasksLength(logs));
@@ -78,21 +93,21 @@ public class LogTableProvider : TextTable<LogModel>
 
 	private List<int> GetStartsLength(List<LogModel> models)
 	{
-		var rows = models.Select(e => e.Start.ToString(DateTimeFormat1).Length).ToList();
+		var rows = models.Select(e => GetStart(e).Length).ToList();
 		rows.Insert(0, nameof(LogModel.Start).Length);
 		return rows;
 	}
 
 	private List<int> GetEndsLength(List<LogModel> models)
 	{
-		var rows = models.Select(e => e.End.HasValue ? e.End.Value.ToString(DateTimeFormat2).Length : 0).ToList();
+		var rows = models.Select(e => GetEnd(e).Length).ToList();
 		rows.Insert(0, nameof(LogModel.End).Length);
 		return rows;
 	}
 
 	private List<int> GetDescriptionsLength(List<LogModel> models)
 	{
-		var rows = models.Select(e => string.IsNullOrWhiteSpace(e.Description) == false ? e.Description.Length : 0).ToList();
+		var rows = models.Select(e => GetDescription(e).Length).ToList();
 		rows.Insert(0, nameof(LogModel.Description).Length);
 		return rows;
 	}
