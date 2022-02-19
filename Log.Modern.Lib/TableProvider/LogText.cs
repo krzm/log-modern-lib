@@ -27,6 +27,9 @@ public abstract class LogText
 	protected string GetCategory(LogModel l) => 
 		l.Task.Category.Name.ToString();
 
+	protected string GetCategoryId(LogModel l) => 
+		l.Task.CategoryId.ToString();
+
 	protected string GetStart(LogModel l) =>
 		l.Start.HasValue ?
 			l.Start.Value.ToString(DateTimeFormat1) : "";

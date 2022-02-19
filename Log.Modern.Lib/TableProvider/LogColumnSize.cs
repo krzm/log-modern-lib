@@ -39,6 +39,13 @@ public abstract class LogColumnSize : LogText
 		return rows;
 	}
 
+	protected List<int> GetCategoryIdLengths(List<LogModel> models)
+	{
+		var rows = models.Select(e => e.Task.CategoryId.ToString().Length).ToList();
+		rows.Insert(0, nameof(LogModel.Task.CategoryId).Length);
+		return rows;
+	}
+
 	protected List<int> GetStartLengths(List<LogModel> models)
 	{
 		var rows = models.Select(e => GetStart(e).Length).ToList();
