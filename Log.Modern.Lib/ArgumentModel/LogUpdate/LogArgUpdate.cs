@@ -5,13 +5,13 @@ using ModelHelper;
 
 namespace Log.Modern.Lib;
 
-[AtLeastOneProperty("TaskId", "Start", "End", "Description", "PlaceId", "TimeTicks"
+[AtLeastOneProperty(
+    "TaskId", "Start", "End", "Description", "PlaceId", "TimeTicks"
+    , "ResetStart", "ResetEnd"
     , ErrorMessage = "You must supply TaskId or Start or End or Description or PlaceId or TimeTicks")]
 public class LogArgUpdate : IArgumentModel, IId
 {
     private const string IdError = "Id must be greater than zero";
-    private bool? endNow;
-    private bool? startNow;
 
     [Operand(
         "id")
@@ -21,8 +21,7 @@ public class LogArgUpdate : IArgumentModel, IId
 
     [Option(
         't'
-        , "taskId"
-        , Description = "Task Id")
+        , "taskId")
         , Range(1, int.MaxValue, ErrorMessage = IdError)]
     public int? TaskId { get; set; }
 
@@ -43,42 +42,12 @@ public class LogArgUpdate : IArgumentModel, IId
 
     [Option(
         'p'
-        , "placeId"
-        , Description = "Place Id")
+        , "placeId")
         , Range(1, int.MaxValue, ErrorMessage = IdError)]
     public int? PlaceId { get; set; }
 
     [Option(
         'i'
-        , "ticks"
-        , Description = "TimeTicks")]
+        , "ticks")]
     public int? TimeTicks { get; set; }
-
-    [Option(
-        'n'
-        , "endnow")]
-    public bool? EndNow
-    { 
-        get => endNow; 
-        set 
-        {
-            endNow = value;
-            if(endNow.HasValue && endNow.Value)
-                End = DateTime.Now;
-        } 
-    }
-
-    [Option(
-        'a'
-        , "startnow")]
-    public bool? StartNow
-    {
-        get => startNow;
-        set
-        {
-            startNow = value;
-            if (startNow.HasValue && startNow.Value)
-                Start = DateTime.Now;
-        }
-    }
 }
