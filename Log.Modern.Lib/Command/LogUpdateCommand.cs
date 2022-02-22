@@ -6,7 +6,7 @@ using Log.Data;
 namespace Log.Modern.Lib;
 
 public class LogUpdateCommand
-    : UpdateCommand<ILogUnitOfWork, LogModel, LogArgUpdate, Data.LogUpdate>
+    : UpdateCommand<ILogUnitOfWork, LogModel, LogArgUpdateReset, Data.LogUpdate>
 {
     public LogUpdateCommand(
         ILogUnitOfWork unitOfWork
