@@ -4,7 +4,7 @@ using Log.Data;
 namespace Log.Modern.Lib;
 
 public class LogTableProvider 
-	: LogColumnSize
+	: LogToColumn
 {
 	public LogTableProvider(
 		IColumnCalculator<LogModel> columnCalculator) 
@@ -42,7 +42,7 @@ public class LogTableProvider
         AddValue(GetColumnData(nameof(LogModel.End)), GetEnd(l));
         AddValue(GetColumnData(nameof(LogModel.Time)), GetTime(l));
         AddValue(GetColumnData(nameof(LogModel.Description)), GetDescription(l));
-        AddValue(GetColumnData(nameof(LogModel.Place)), GetPlaceName(l));
+        AddValue(GetColumnData(nameof(LogModel.Place)), GetPlace(l));
     }
 
     protected override void SetColumnsSize(List<LogModel> l)

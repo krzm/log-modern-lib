@@ -3,48 +3,48 @@ using Log.Data;
 
 namespace Log.Modern.Lib;
 
-public abstract class LogText
+public abstract class LogToText
     : TextTable<LogModel>
 {
 	private const string DateTimeFormat1 = "dd.MM.yyyy HH:mm";
 	private const string DateTimeFormat2 = "HH:mm";
 	
-    protected LogText(
+    protected LogToText(
 		IColumnCalculator<LogModel> columnCalculator) 
 			: base(columnCalculator)
     {
     }
 
-	protected string GetId(LogModel l) => 
-		l.Id.ToString();
+	protected string GetId(LogModel m) => 
+		m.Id.ToString();
 	
-	protected string GetTask(LogModel l) =>
-		l.Task.Name;
+	protected string GetTask(LogModel m) =>
+		m.Task.Name;
 
-    protected string GetTaskId(LogModel l) => 
-		l.TaskId.ToString();
+    protected string GetTaskId(LogModel m) => 
+		m.TaskId.ToString();
 
-	protected string GetCategory(LogModel l) => 
-		l.Task.Category.Name.ToString();
+	protected string GetCategory(LogModel m) => 
+		m.Task.Category.Name.ToString();
 
-	protected string GetCategoryId(LogModel l) => 
-		l.Task.CategoryId.ToString();
+	protected string GetCategoryId(LogModel m) => 
+		m.Task.CategoryId.ToString();
 
-	protected string GetStart(LogModel l) =>
-		l.Start.HasValue ?
-			l.Start.Value.ToString(DateTimeFormat1) : "";
+	protected string GetStart(LogModel m) =>
+		m.Start.HasValue ?
+			m.Start.Value.ToString(DateTimeFormat1) : "";
 
-    protected string GetEnd(LogModel l) => 
-		l.End.HasValue ?
-			l.End.Value.ToString(DateTimeFormat2) : "";
+    protected string GetEnd(LogModel m) => 
+		m.End.HasValue ?
+			m.End.Value.ToString(DateTimeFormat2) : "";
 
-    protected string GetTime(LogModel l) => 
-		$"{l.Time.Hours}:{l.Time.Minutes}";
+    protected string GetTime(LogModel m) => 
+		$"{m.Time.Hours}:{m.Time.Minutes}";
 	
-	protected string GetDescription(LogModel l) => 
-		string.IsNullOrWhiteSpace(l.Description) == false ? 
-			l.Description : "";
+	protected string GetDescription(LogModel m) => 
+		string.IsNullOrWhiteSpace(m.Description) == false ? 
+			m.Description : "";
 	
-	protected string GetPlaceName(LogModel l) =>
-		l.Place.Name;
+	protected string GetPlace(LogModel m) =>
+		m.Place.Name;
 }
