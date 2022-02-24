@@ -2,11 +2,14 @@ using System.Linq.Expressions;
 
 namespace Log.Modern.Lib;
 
-public class TaskFilter : IFilterFactory<Data.Task, TaskArgFilter>
+public class TaskFilter 
+    : IFilterFactory<Data.Task, TaskArgFilter>
 {
-    public Expression<Func<Data.Task, bool>>? GetFilter(TaskArgFilter filter)
+    public Expression<Func<Data.Task, bool>>? GetFilter(
+        TaskArgFilter filter)
     {
-        if(filter.CategoryId.HasValue && string.IsNullOrWhiteSpace(filter.Name) == false)
+        if(filter.CategoryId.HasValue 
+            && string.IsNullOrWhiteSpace(filter.Name) == false)
         {
             return task => 
                 task.CategoryId == filter.CategoryId.Value 
