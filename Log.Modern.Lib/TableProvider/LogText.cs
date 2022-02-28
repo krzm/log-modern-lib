@@ -10,8 +10,10 @@ public abstract class LogToText
 	private const string DateTimeFormat2 = "HH:mm";
 	
     protected LogToText(
-		IColumnCalculator<LogModel> columnCalculator) 
-			: base(columnCalculator)
+		ITableTextEditor tableTextEditor
+		, IColumnCalculator<LogModel> columnCalculator)
+			: base(tableTextEditor
+				, columnCalculator)
     {
     }
 

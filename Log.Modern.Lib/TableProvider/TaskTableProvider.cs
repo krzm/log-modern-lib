@@ -6,10 +6,12 @@ public class TaskTableProvider
 	: TaskToColumn
 {
 	public TaskTableProvider(
-		IColumnCalculator<Data.Task> columnCalculator) 
-			: base(columnCalculator)
-	{
-	}
+		ITableTextEditor tableTextEditor
+		, IColumnCalculator<Data.Task> columnCalculator)
+			: base(tableTextEditor
+				, columnCalculator)
+    {
+    }
 
 	protected override void CreateTableHeader()
 	{
@@ -18,20 +20,20 @@ public class TaskTableProvider
 
 	private void AddColumns()
 	{
-		AddColumn(GetColumnData(nameof(Data.Task.Id)));
-		AddColumn(GetColumnData(nameof(Data.Task.Name)));
-		AddColumn(GetColumnData(nameof(Data.Task.Category)));
-		AddColumn(GetColumnData(nameof(Data.Task.CategoryId)));
-		AddColumn(GetColumnData(nameof(Data.Task.Description)));
+		Editor.AddColumn(GetColumnData(nameof(Data.Task.Id)));
+		Editor.AddColumn(GetColumnData(nameof(Data.Task.Name)));
+		Editor.AddColumn(GetColumnData(nameof(Data.Task.Category)));
+		Editor.AddColumn(GetColumnData(nameof(Data.Task.CategoryId)));
+		Editor.AddColumn(GetColumnData(nameof(Data.Task.Description)));
 	}
 
 	protected override void CreateTableRow(Data.Task t)
 	{
-		AddValue(GetColumnData(nameof(Data.Task.Id)), GetId(t));
-		AddValue(GetColumnData(nameof(Data.Task.Name)), t.Name);
-		AddValue(GetColumnData(nameof(Data.Task.Category)), GetCategory(t));
-		AddValue(GetColumnData(nameof(Data.Task.CategoryId)), GetCategoryId(t));
-		AddValue(GetColumnData(nameof(Data.Task.Description)), t.Description);
+		Editor.AddValue(GetColumnData(nameof(Data.Task.Id)), GetId(t));
+		Editor.AddValue(GetColumnData(nameof(Data.Task.Name)), t.Name);
+		Editor.AddValue(GetColumnData(nameof(Data.Task.Category)), GetCategory(t));
+		Editor.AddValue(GetColumnData(nameof(Data.Task.CategoryId)), GetCategoryId(t));
+		Editor.AddValue(GetColumnData(nameof(Data.Task.Description)), t.Description);
 	}
 
 	protected override void SetColumnsSize(List<Data.Task> items)

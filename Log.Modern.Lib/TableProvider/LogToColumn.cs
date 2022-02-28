@@ -6,8 +6,10 @@ namespace Log.Modern.Lib;
 public abstract class LogToColumn : LogToText
 {
     protected LogToColumn(
-		IColumnCalculator<LogModel> columnCalculator) 
-			: base(columnCalculator)
+		ITableTextEditor tableTextEditor
+		, IColumnCalculator<LogModel> columnCalculator)
+			: base(tableTextEditor
+				, columnCalculator)
     {
     }
 

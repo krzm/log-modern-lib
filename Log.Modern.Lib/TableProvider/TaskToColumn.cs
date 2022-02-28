@@ -6,8 +6,10 @@ public abstract class TaskToColumn
     : TaskToText
 {
     protected TaskToColumn(
-		IColumnCalculator<Data.Task> columnCalculator) 
-			: base(columnCalculator)
+		ITableTextEditor tableTextEditor
+		, IColumnCalculator<Data.Task> columnCalculator)
+			: base(tableTextEditor
+				, columnCalculator)
     {
     }
 
