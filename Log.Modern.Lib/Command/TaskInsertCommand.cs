@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using CLIHelper;
 using CRUDCommandHelper;
 using Log.Data;
+using Serilog;
 
 namespace Log.Modern.Lib;
 
@@ -10,9 +10,9 @@ public class TaskInsertCommand
 {
     public TaskInsertCommand(
         ILogUnitOfWork unitOfWork
-        , IOutput output
+        , ILogger log
         , IMapper mapper)
-            : base(unitOfWork, output, mapper)
+            : base(unitOfWork, log, mapper)
     {
     }
 

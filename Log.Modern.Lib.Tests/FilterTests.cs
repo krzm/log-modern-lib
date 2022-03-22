@@ -1,3 +1,4 @@
+using System;
 using Xunit;
 
 namespace Log.Modern.Lib.Tests;
@@ -10,12 +11,13 @@ public class TaskFilterTests
         int? filterId
         , string? filterName)
     {
-        var filter = new TaskFilter().GetFilter(
-            new TaskArgFilter{ 
-                CategoryId = filterId
-                , Name = filterName });
-
-        Assert.Null(filter);
+        var filterArg = new TaskArgFilter
+        { 
+            CategoryId = filterId
+            , Name = filterName
+        };
+        var filterExp = new TaskFilter().GetFilter(filterArg);
+        Assert.Null(filterExp);
     }
 
     [Theory]
@@ -26,12 +28,17 @@ public class TaskFilterTests
         , int? filterId
         , bool expected)
     {
-        var data = new Data.Task{ 
-            CategoryId = id };
-        var filter = new TaskFilter().GetFilter(
-            new TaskArgFilter{ 
-                CategoryId = filterId }).Compile();
-
+        var filterArg = new TaskArgFilter
+        { 
+            CategoryId = filterId 
+        };
+        var filterExp = new TaskFilter().GetFilter(filterArg);
+        ArgumentNullException.ThrowIfNull(filterExp);
+        var filter = filterExp.Compile();
+        var data = new Data.Task
+        { 
+            CategoryId = id 
+        };
         Assert.Equal(expected, filter(data));
     }
 
@@ -43,12 +50,17 @@ public class TaskFilterTests
         , string filterName
         , bool expected)
     {
-        var data = new Data.Task{ 
-            Name = name };
-        var filter = new TaskFilter().GetFilter(
-            new TaskArgFilter{ 
-                Name = filterName }).Compile();
-
+        var filterArg = new TaskArgFilter
+        { 
+            Name = filterName 
+        };
+        var filterExp = new TaskFilter().GetFilter(filterArg);
+        ArgumentNullException.ThrowIfNull(filterExp);
+        var filter = filterExp.Compile();
+        var data = new Data.Task
+        { 
+            Name = name 
+        };
         Assert.Equal(expected, filter(data));
     }
 
@@ -64,14 +76,19 @@ public class TaskFilterTests
         , string filterName
         , bool expected)
     {
-        var data = new Data.Task { 
+        var filterArg = new TaskArgFilter
+        {
+            CategoryId = filterId
+            , Name = filterName 
+        };
+        var filterExp = new TaskFilter().GetFilter(filterArg);
+        ArgumentNullException.ThrowIfNull(filterExp);
+        var filter = filterExp.Compile();
+        var data = new Data.Task 
+        { 
             CategoryId = id
-            , Name = name };
-        var filter = new TaskFilter().GetFilter(
-            new TaskArgFilter{ 
-                CategoryId = filterId
-                , Name = filterName }).Compile();
-
+            , Name = name 
+        };
         Assert.Equal(expected, filter(data));
     }
 }

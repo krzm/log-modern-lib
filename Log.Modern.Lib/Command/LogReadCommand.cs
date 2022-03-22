@@ -2,6 +2,7 @@
 using CRUDCommandHelper;
 using DataToTable;
 using Log.Data;
+using Serilog;
 
 namespace Log.Modern.Lib;
 
@@ -13,9 +14,10 @@ public class LogReadCommand
     public LogReadCommand(
         ILogUnitOfWork unitOfWork
         , IOutput output
+        , ILogger log
         , IDataToText<LogModel> textProvider
         , IFilterFactory<LogModel, LogArgFilter> filterFactory)
-            : base(unitOfWork, output, textProvider)
+            : base(unitOfWork, output, log, textProvider)
     {
         this.filterFactory = filterFactory;
     }

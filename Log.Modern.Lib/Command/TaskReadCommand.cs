@@ -2,6 +2,7 @@ using CLIHelper;
 using CRUDCommandHelper;
 using DataToTable;
 using Log.Data;
+using Serilog;
 
 namespace Log.Modern.Lib;
 
@@ -13,9 +14,10 @@ public class TaskReadCommand
     public TaskReadCommand(
         ILogUnitOfWork unitOfWork
         , IOutput output
+        , ILogger log
         , IDataToText<Data.Task> textProvider
         , IFilterFactory<Data.Task, TaskArgFilter> filterFactory) 
-            : base(unitOfWork, output, textProvider)
+            : base(unitOfWork, output, log, textProvider)
     {
         this.filterFactory = filterFactory;
     }

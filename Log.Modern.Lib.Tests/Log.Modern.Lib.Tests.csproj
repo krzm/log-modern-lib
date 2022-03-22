@@ -25,12 +25,12 @@
 	</ItemGroup>
 
   <ItemGroup>
-		<Reference Include="Log.Data">
-			<HintPath>..\..\..\Build\log-data\Log.Data\Log.Data.dll</HintPath>
-		</Reference>
+    <ProjectReference Include="..\Log.Modern.Lib\Log.Modern.Lib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Log.Modern.Lib\Log.Modern.Lib.csproj" />
+		<Reference Include="Log.Data">
+			<HintPath>..\..\log-data\Log.Data\bin\Debug\net6.0\Log.Data.dll</HintPath>
+		</Reference>
   </ItemGroup>
 </Project>

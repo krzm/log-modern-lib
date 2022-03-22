@@ -2,6 +2,7 @@ using CLIHelper;
 using CRUDCommandHelper;
 using DataToTable;
 using Log.Data;
+using Serilog;
 
 namespace Log.Modern.Lib;
 
@@ -11,8 +12,9 @@ public class CategoryReadCommand
     public CategoryReadCommand(
         ILogUnitOfWork unitOfWork
         , IOutput output
+        , ILogger log
         , IDataToText<Data.Category> textProvider) 
-            : base(unitOfWork, output, textProvider)
+            : base(unitOfWork, output, log, textProvider)
     {
     }
 
