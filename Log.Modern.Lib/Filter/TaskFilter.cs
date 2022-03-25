@@ -2,6 +2,7 @@ using System.Linq.Expressions;
 
 namespace Log.Modern.Lib;
 
+#nullable enable
 public class TaskFilter 
     : IFilterFactory<Data.Task, TaskArgFilter>
 {
