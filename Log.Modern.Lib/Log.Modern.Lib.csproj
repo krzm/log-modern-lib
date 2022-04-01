@@ -15,14 +15,14 @@
 		<PackageReference Include="Serilog" Version="2.10.0" />
 	</ItemGroup>
 
-	<!-- Debug References CommandDotNet-->
+	<!--Debug refs CommandDotNet-->
 	<!-- <ItemGroup>
 		<Reference Include="CommandDotNet">
 			<HintPath>..\..\commanddotnet\CommandDotNet\bin\Debug\net5.0\CommandDotNet.dll</HintPath>
 		</Reference>
 	<ItemGroup> -->
 
-	<!-- Debug References -->
+	<!--Debug refs-->
 	<!-- <ItemGroup>
 		<Reference Include="EFCoreHelper">
 			<HintPath>..\..\efcore-helper\EFCoreHelper\bin\Debug\net6.0\EFCoreHelper.dll</HintPath>
@@ -50,7 +50,7 @@
 		</Reference>
 	</ItemGroup> -->
 
-	<!-- Release References -->
+	<!--Release refs-->
 	<ItemGroup>
 		<Reference Include="EFCoreHelper">
 			<HintPath>..\..\..\Build\efcore-helper\EFCoreHelper\EFCoreHelper.dll</HintPath>
