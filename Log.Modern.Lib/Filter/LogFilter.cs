@@ -89,18 +89,14 @@ public class LogFilter
 
     private Expression<Func<LogModel, bool>> GetFilterByStartAndCategory()
     {
-        return l => 
-            l.Start.HasValue ?
-                l.Start.Value.Date.Equals(dateFilter)
-                    && l.Task.CategoryId == FilterCategoryId 
-                : l.Task.CategoryId == FilterCategoryId;
+        return l => l.Start.HasValue && l.End.HasValue
+            && l.Start.Value.Date.Equals(dateFilter)
+            && l.Task!.CategoryId == FilterCategoryId;
     }
 
     private Expression<Func<LogModel, bool>> GetFilterByStart()
     {
-        return l => 
-            l.Start.HasValue ?
-                l.Start.Value.Date.Equals(dateFilter) 
-                : false;
+        return l => l.Start.HasValue && l.End.HasValue
+            && l.Start.Value.Date.Equals(dateFilter);
     }    
 }
