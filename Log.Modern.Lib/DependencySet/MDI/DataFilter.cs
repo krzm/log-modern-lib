@@ -17,7 +17,7 @@ public class DataFilter
     {
         Container
             .AddSingleton<
-                IFilterFactory<LogModel, LogArgFilter>
+                IFilterFactory<LogModel, LogFilterArgs>
                 , LogFilter>()
             .AddSingleton<
                 IFilterFactory<Data.Task, TaskArgFilter>

@@ -3,25 +3,28 @@ using CommandDotNet;
 
 namespace Log.Modern.Lib;
 
-public class LogArgFilter 
+public class LogFilterArgs 
     : IArgumentModel
 {
     private const string IdError = "Id must be greater than zero";
 
     [Option(
-        's'
-        , "start")]
+        shortName: 's'
+        , longName: "start")]
     public DateTime? Start { get; set; }
 
     [Option(
-        'c'
-        , nameof(CategoryId))
+        shortName: 'c'
+        , longName: "category")
         , Range(1, int.MaxValue, ErrorMessage = IdError)]
     public int? CategoryId { get; set; }
 
     [Option(
-        't'
-        , nameof(TaskId))
-        , Range(1, int.MaxValue, ErrorMessage = IdError)]
+        shortName: 't'
+        , longName: "task")
+    , Range(1, int.MaxValue, ErrorMessage = IdError)]
     public int? TaskId { get; set; }
+
+    [Option(longName: "todo")]
+    public bool ToDoLogs { get; set; }
 }

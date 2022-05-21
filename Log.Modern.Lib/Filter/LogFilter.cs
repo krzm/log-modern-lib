@@ -3,17 +3,45 @@ using Log.Data;
 
 namespace Log.Modern.Lib;
 
-#nullable enable
 public class LogFilter 
-    : IFilterFactory<Data.LogModel, LogArgFilter>
+    : IFilterFactory<Data.LogModel, LogFilterArgs>
 {
-    private LogArgFilter? filter;
+    private LogFilterArgs? filterArgs;
     private DateTime dateFilter;
 
-    public Expression<Func<Data.LogModel, bool>>? GetFilter(
-        LogArgFilter f)
+    private LogFilterArgs FilterArgs
     {
-        SetFilter(f);
+        get
+        {
+            ArgumentNullException.ThrowIfNull(filterArgs);
+            return filterArgs;
+        }
+    }
+
+    private int FilterTaskId
+    {
+        get
+        {
+            ArgumentNullException.ThrowIfNull(FilterArgs.TaskId);
+            return FilterArgs.TaskId.Value;
+        }
+    }
+
+    private int FilterCategoryId
+    {
+        get
+        {
+            ArgumentNullException.ThrowIfNull(FilterArgs.CategoryId);
+            return FilterArgs.CategoryId.Value;
+        }
+    }
+
+    public Expression<Func<Data.LogModel, bool>>? GetFilter(
+        LogFilterArgs filterArgs)
+    {
+        SetFilter(filterArgs);
+        if(IsToDoFilterOn())
+            return GetToDoFilter();
         if(IsTaskFiltered())
             return GetFilterByTask();
         SetStartFilterValue();
@@ -22,50 +50,57 @@ public class LogFilter
             : GetFilterByStart();
     }
 
-    private void SetFilter(LogArgFilter f) =>
-        filter = f;
+    private void SetFilter(LogFilterArgs filterArgs)
+    {
+        this.filterArgs = filterArgs;
+    }
+
+    private bool IsToDoFilterOn()
+    {
+        return FilterArgs.ToDoLogs;
+    }
+
+    private Expression<Func<LogModel, bool>>? GetToDoFilter()
+    {
+        return l => l.Start.HasValue == false && l.End.HasValue == false;
+    }
 
     private void SetStartFilterValue()
     {
-        ArgumentNullException.ThrowIfNull(filter);
-        dateFilter = filter.Start.HasValue ?
-            filter.Start.Value.Date 
+        dateFilter = FilterArgs.Start.HasValue ?
+            FilterArgs.Start.Value.Date 
             : DateTime.Now.Date;
     }
 
     private bool IsTaskFiltered()
     {
-        ArgumentNullException.ThrowIfNull(filter);
-        return filter.TaskId.HasValue;
+        return FilterArgs.TaskId.HasValue;
     } 
 
     private Expression<Func<LogModel, bool>>? GetFilterByTask()
     {
-        ArgumentNullException.ThrowIfNull(filter);
-        ArgumentNullException.ThrowIfNull(filter.TaskId);
-        return l => l.TaskId == filter.TaskId.Value;
+        return l => l.TaskId == FilterTaskId;
     }
 
     private bool IsCategoryFiltered()
     {
-        ArgumentNullException.ThrowIfNull(filter);
-        return filter.CategoryId.HasValue;
+        return FilterArgs.CategoryId.HasValue;
     }
 
     private Expression<Func<LogModel, bool>> GetFilterByStartAndCategory()
     {
-        ArgumentNullException.ThrowIfNull(filter);
-        ArgumentNullException.ThrowIfNull(filter.CategoryId);
-        return l => l.Start.HasValue ?
-            l.Start.Value.Date.Equals(dateFilter)
-                && l.Task.CategoryId == filter.CategoryId.Value 
-            : l.Task.CategoryId == filter.CategoryId.Value;
+        return l => 
+            l.Start.HasValue ?
+                l.Start.Value.Date.Equals(dateFilter)
+                    && l.Task.CategoryId == FilterCategoryId 
+                : l.Task.CategoryId == FilterCategoryId;
     }
 
     private Expression<Func<LogModel, bool>> GetFilterByStart()
     {
-        return l => l.Start.HasValue ?
-            l.Start.Value.Date.Equals(dateFilter)
-            : true;
+        return l => 
+            l.Start.HasValue ?
+                l.Start.Value.Date.Equals(dateFilter) 
+                : false;
     }    
 }
