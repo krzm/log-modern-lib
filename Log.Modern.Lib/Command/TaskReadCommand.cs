@@ -26,7 +26,7 @@ public class TaskReadCommand
     {
         return UnitOfWork.Task.Get(
             filterFactory.GetFilter(model)
-            , orderBy: t => t.OrderBy(p => p.Category.Name)
-            , includeProperties: "Category").ToList();
+            , orderBy: t => t.OrderBy(p => p.Category!.Name)
+            , includeProperties: nameof(Data.Task.Category)).ToList();
     }
 }

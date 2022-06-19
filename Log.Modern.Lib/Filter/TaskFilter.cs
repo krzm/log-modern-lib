@@ -2,7 +2,6 @@ using System.Linq.Expressions;
 
 namespace Log.Modern.Lib;
 
-#nullable enable
 public class TaskFilter 
     : IFilterFactory<Data.Task, TaskArgFilter>
 {
@@ -14,13 +13,15 @@ public class TaskFilter
         {
             return task => 
                 task.CategoryId == filter.CategoryId.Value 
+                && string.IsNullOrWhiteSpace(task.Name) == false
                 && task.Name.Contains(filter.Name);
         }
         if(filter.CategoryId.HasValue)
             return task => task.CategoryId == filter.CategoryId.Value;
         if(string.IsNullOrWhiteSpace(filter.Name) == false)
-            return task => 
-                task.Name.Contains(filter.Name);
+            return task =>
+                string.IsNullOrWhiteSpace(task.Name) == false
+                && task.Name.Contains(filter.Name);
         return default;
     }
 }
