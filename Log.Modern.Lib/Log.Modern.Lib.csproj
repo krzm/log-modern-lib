@@ -1,26 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
-
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0-preview.5.22301.12" />
-		<PackageReference Include="Unity" Version="5.11.10" />
-		<PackageReference Include="AutoMapper" Version="11.0.1" />
-		<PackageReference Include="CommandDotNet" Version="6.1.0-alpha.repl" />
-		<PackageReference Include="Serilog" Version="2.10.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0"/>
+		<PackageReference Include="Unity" Version="5.11.10"/>
+		<PackageReference Include="AutoMapper" Version="11.0.1"/>
+		<PackageReference Include="CommandDotNet" Version="6.1.0-alpha.repl"/>
+		<PackageReference Include="Serilog" Version="2.11.0"/>
 	</ItemGroup>
-
 	<!--Debug refs CommandDotNet-->
 	<!-- <ItemGroup>
 		<Reference Include="CommandDotNet">
 			<HintPath>..\..\commanddotnet\CommandDotNet\bin\Debug\net5.0\CommandDotNet.dll</HintPath>
 		</Reference>
 	<ItemGroup> -->
-
 	<!--Debug refs-->
 	<!-- <ItemGroup>
 		<Reference Include="EFCore.Helper">
@@ -48,7 +44,6 @@
 			<HintPath>..\..\log-data\Log.Data\bin\Debug\net6.0\Log.Data.dll</HintPath>
 		</Reference>
 	</ItemGroup> -->
-
 	<!--Release refs-->
 	<ItemGroup>
 		<Reference Include="EFCore.Helper">
@@ -75,6 +70,5 @@
 		<Reference Include="Log.Data">
 			<HintPath>..\..\..\Build\log-data\Log.Data\Log.Data.dll</HintPath>
 		</Reference>
-  	</ItemGroup>
-
+	</ItemGroup>
 </Project>
