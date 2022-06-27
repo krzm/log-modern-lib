@@ -18,6 +18,7 @@ public class AppCommands
         RegisterReadCommands();
         RegisterInsertCommands();
         RegisterUpdateCommands();
+        RegisterDeleteCommands();
     }
 
     private void RegisterReadCommands()
