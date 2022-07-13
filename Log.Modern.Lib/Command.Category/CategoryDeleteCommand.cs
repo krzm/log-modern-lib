@@ -1,3 +1,4 @@
+using CLIHelper;
 using CRUDCommandHelper;
 using Log.Data;
 using Serilog;
@@ -9,8 +10,9 @@ public class CategoryDeleteCommand
 {
     public CategoryDeleteCommand(
         ILogUnitOfWork unitOfWork
-        , ILogger log) 
-            : base(unitOfWork, log)
+        , ILogger log
+        , IInput input) 
+            : base(unitOfWork, log, input)
     {
     }
 

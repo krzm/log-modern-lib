@@ -51,6 +51,7 @@ public class AppCommands
     private void RegisterDeleteCommands()
     {
         Container
-            .RegisterSingleton<IDeleteCommand<DeleteArgs>, CategoryDeleteCommand>();
+            .RegisterSingleton<IDeleteCommand<DeleteArgs>, CategoryDeleteCommand>()
+            .RegisterSingleton<IDeleteCommand<DeleteArgs>, LogDeleteCommand>();
     }
 }
