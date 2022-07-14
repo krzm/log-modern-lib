@@ -20,7 +20,7 @@ public class DataFilter
                 IFilterFactory<LogModel, LogFilterArgs>
                 , LogFilter>()
             .RegisterSingleton<
-                IFilterFactory<Data.Task, TaskArgFilter>
+                IFilterFactory<Data.Task, TaskFilterArgs>
                 , TaskFilter>();
     }
 }

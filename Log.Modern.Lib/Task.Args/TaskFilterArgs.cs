@@ -1,21 +1,22 @@
 ﻿using CommandDotNet;
+using ModelHelper;
 using System.ComponentModel.DataAnnotations;
 
 namespace Log.Modern.Lib;
 
-public class TaskArgFilter : IArgumentModel
+public class TaskFilterArgs
+    : Model
+    , IArgumentModel
 {
-    private const string IdError = "Id must be greater than zero";
-
     [Option(
         'c'
         , nameof(CategoryId))
-        , Range(1, int.MaxValue, ErrorMessage = IdError)]
+        , Range(IdMin, IdMax, ErrorMessage = IdError)]
     public int? CategoryId { get; set; }
 
     [Option(
         'n'
         , nameof(Name))
-        , MaxLength(25)]
+        , MaxLength(NameMax)]
     public string? Name { get; set; }
 }

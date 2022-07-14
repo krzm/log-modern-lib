@@ -11,7 +11,7 @@ public class TaskFilterTests
         int? filterId
         , string? filterName)
     {
-        var filterArg = new TaskArgFilter
+        var filterArg = new TaskFilterArgs
         { 
             CategoryId = filterId
             , Name = filterName
@@ -28,7 +28,7 @@ public class TaskFilterTests
         , int? filterId
         , bool expected)
     {
-        var filterArg = new TaskArgFilter
+        var filterArg = new TaskFilterArgs
         { 
             CategoryId = filterId 
         };
@@ -50,7 +50,7 @@ public class TaskFilterTests
         , string filterName
         , bool expected)
     {
-        var filterArg = new TaskArgFilter
+        var filterArg = new TaskFilterArgs
         { 
             Name = filterName 
         };
@@ -76,7 +76,7 @@ public class TaskFilterTests
         , string filterName
         , bool expected)
     {
-        var filterArg = new TaskArgFilter
+        var filterArg = new TaskFilterArgs
         {
             CategoryId = filterId
             , Name = filterName 

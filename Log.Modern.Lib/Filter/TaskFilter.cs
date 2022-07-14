@@ -3,10 +3,10 @@ using System.Linq.Expressions;
 namespace Log.Modern.Lib;
 
 public class TaskFilter 
-    : IFilterFactory<Data.Task, TaskArgFilter>
+    : IFilterFactory<Data.Task, TaskFilterArgs>
 {
     public Expression<Func<Data.Task, bool>>? GetFilter(
-        TaskArgFilter filter)
+        TaskFilterArgs filter)
     {
         if(filter.CategoryId.HasValue 
             && string.IsNullOrWhiteSpace(filter.Name) == false)

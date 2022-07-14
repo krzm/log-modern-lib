@@ -6,7 +6,7 @@ using Serilog;
 namespace Log.Modern.Lib;
 
 public class TaskUpdateCommand
-    : UpdateCommand<ILogUnitOfWork, Data.Task, TaskArgUpdate, Data.TaskUpdate>
+    : UpdateCommand<ILogUnitOfWork, Data.Task, TaskUpdateArgs, Data.TaskUpdate>
 {
     public TaskUpdateCommand(
         ILogUnitOfWork unitOfWork
