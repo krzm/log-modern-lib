@@ -20,7 +20,7 @@ public class  LogInsertArgs
     [Operand(nameof(PlaceId))
         , Required
         , Range(IdMin, IdMax, ErrorMessage = IdError)]
-    public int PlaceId { get; set; } = 1;    
+    public int PlaceId { get; set; } = 1;
 
     [Operand(nameof(Start)
         , Description = DateFormat)]
@@ -28,5 +28,5 @@ public class  LogInsertArgs
 
     [Operand(nameof(End)
         , Description = DateFormat)]
-    public DateTime? End { get; set; }    
+    public DateTime? End { get; set; }
 }
