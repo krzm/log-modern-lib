@@ -2,6 +2,7 @@
 
 namespace Log.Modern.Lib;
 
-public class PlaceArgFilter : IArgumentModel
+public class PlaceFilterArgs
+    : IArgumentModel
 {
 }

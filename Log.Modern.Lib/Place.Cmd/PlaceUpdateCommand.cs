@@ -6,7 +6,7 @@ using Serilog;
 namespace Log.Modern.Lib;
 
 public class PlaceUpdateCommand
-    : UpdateCommand<ILogUnitOfWork, Data.Place, PlaceArgUpdate, Data.PlaceUpdate>
+    : UpdateCommand<ILogUnitOfWork, Data.Place, PlaceUpdateArgs, Data.PlaceUpdate>
 {
     public PlaceUpdateCommand(
         ILogUnitOfWork unitOfWork

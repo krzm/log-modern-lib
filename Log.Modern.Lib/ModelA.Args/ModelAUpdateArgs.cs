@@ -1,9 +1,14 @@
 using System.ComponentModel.DataAnnotations;
 using CommandDotNet;
+using DotNetExtension;
 using ModelHelper;
 
 namespace Log.Modern.Lib;
 
+[AtLeastOneProperty(
+    nameof(ModelA.Name)
+    , nameof(ModelA.Description)
+    , ErrorMessage=UpdateError)]
 public abstract class  ModelAUpdateArgs 
     : Model
     , IArgumentModel

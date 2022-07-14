@@ -18,12 +18,12 @@ public class AppMappings
         new (
         c =>
         {
-            c.CreateMap<PlaceArg, Place>();
+            c.CreateMap<PlaceInsertArgs, Place>();
             c.CreateMap<CategoryInsertArgs, Category>();
             c.CreateMap<TaskArg, Task>();
             c.CreateMap<LogInsertArgs, LogModel>();
 
-            c.CreateMap<PlaceArgUpdate, PlaceUpdate>();
+            c.CreateMap<PlaceUpdateArgs, PlaceUpdate>();
             c.CreateMap<CategoryUpdateArgs, CategoryUpdate>();
             c.CreateMap<TaskArgUpdate, TaskUpdate>();
             c.CreateMap<LogArgUpdateReset, LogUpdate>();

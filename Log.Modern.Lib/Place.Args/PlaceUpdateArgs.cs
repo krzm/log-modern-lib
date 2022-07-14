@@ -1,6 +1,6 @@
 namespace Log.Modern.Lib;
 
-public class CategoryUpdateArgs
+public class PlaceUpdateArgs
     : ModelAUpdateArgs
 {
 }

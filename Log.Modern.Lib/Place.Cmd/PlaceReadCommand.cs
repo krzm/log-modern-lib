@@ -7,7 +7,7 @@ using Serilog;
 namespace Log.Modern.Lib;
 
 public class PlaceReadCommand
-    : ReadCommand<ILogUnitOfWork, Data.Place, PlaceArgFilter>
+    : ReadCommand<ILogUnitOfWork, Data.Place, PlaceFilterArgs>
 {
     public PlaceReadCommand(
         ILogUnitOfWork unitOfWork
@@ -18,6 +18,6 @@ public class PlaceReadCommand
     {
     }
 
-    protected override List<Data.Place> Get(PlaceArgFilter model) =>
+    protected override List<Data.Place> Get(PlaceFilterArgs model) =>
         UnitOfWork.Place.Get().ToList();
 }
