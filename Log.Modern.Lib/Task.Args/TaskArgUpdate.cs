@@ -6,7 +6,7 @@ using ModelHelper;
 namespace Log.Modern.Lib;
 
 [AtLeastOneProperty("CategoryId", "Name", "Description", ErrorMessage="You must supply Name or Description or CategoryId")]
-public class  TaskArgUpdate : ModelAArgUpdate
+public class  TaskArgUpdate : ModelAUpdateArgs
     , IArgumentModel, IId
 {
     [Option(

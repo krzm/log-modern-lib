@@ -1,5 +1,5 @@
 namespace Log.Modern.Lib;
 
-public class PlaceArg : ModelAArg
+public class PlaceArg : ModelAInsertArgs
 {
 }

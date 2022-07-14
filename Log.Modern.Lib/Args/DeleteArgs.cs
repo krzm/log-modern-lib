@@ -5,12 +5,13 @@ using ModelHelper;
 namespace Log.Modern.Lib;
 
 public class DeleteArgs 
-    : IArgumentModel
-        , IId
+    : Model
+    , IArgumentModel
+    , IId
 {
     [Operand(
         "id")
         , Required
-        , Range(1, int.MaxValue, ErrorMessage = "Id must be greater than zero")]
+        , Range(IdMin, IdMax, ErrorMessage = IdError)]
     public int Id { get; set; }
 }

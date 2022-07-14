@@ -4,24 +4,26 @@ using ModelHelper;
 
 namespace Log.Modern.Lib;
 
-public abstract class  ModelAArgUpdate 
-    : IArgumentModel, IId
+public abstract class  ModelAUpdateArgs 
+    : Model
+    , IArgumentModel
+    , IId
 {
     [Operand(
         "id")
         , Required
-        , Range(1, int.MaxValue, ErrorMessage = "Id must be greater than zero")]
+        , Range(IdMin, IdMax, ErrorMessage = IdError)]
     public int Id { get; set; }
 
     [Option(
         'n'
         ,"name")
-        , MaxLength(25)]
+        , MaxLength(NameMax)]
     public string? Name { get; set; }
 
     [Option(
         'd'
         ,"description")
-        , MaxLength(70)]
+        , MaxLength(DescriptionMax)]
     public string? Description { get; set; }
 }
