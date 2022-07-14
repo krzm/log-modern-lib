@@ -25,7 +25,7 @@ public class AppCommands
     {
         Container
             .RegisterSingleton<IReadCommand<PlaceArgFilter>, PlaceReadCommand>()
-            .RegisterSingleton<IReadCommand<CategoryArgFilter>, CategoryReadCommand>()
+            .RegisterSingleton<IReadCommand<CategoryFilterArgs>, CategoryReadCommand>()
             .RegisterSingleton<IReadCommand<TaskArgFilter>, TaskReadCommand>()
             .RegisterSingleton<IReadCommand<LogFilterArgs>, LogReadCommand>();
     }
@@ -34,7 +34,7 @@ public class AppCommands
     {
         Container
             .RegisterSingleton<IInsertCommand<PlaceArg>, PlaceInsertCommand>()
-            .RegisterSingleton<IInsertCommand<CategoryArg>, CategoryInsertCommand>()
+            .RegisterSingleton<IInsertCommand<CategoryInsertArgs>, CategoryInsertCommand>()
             .RegisterSingleton<IInsertCommand<Lib.TaskArg>, TaskInsertCommand>()
             .RegisterSingleton<IInsertCommand<Lib.LogInsertArgs>, LogInsertCommand>();
     }
@@ -43,7 +43,7 @@ public class AppCommands
     {
         Container
             .RegisterSingleton<IUpdateCommand<PlaceArgUpdate>, PlaceUpdateCommand>()
-            .RegisterSingleton<IUpdateCommand<CategoryArgUpdate>, CategoryUpdateCommand>()
+            .RegisterSingleton<IUpdateCommand<CategoryUpdateArgs>, CategoryUpdateCommand>()
             .RegisterSingleton<IUpdateCommand<TaskArgUpdate>, TaskUpdateCommand>()
             .RegisterSingleton<IUpdateCommand<LogArgUpdateReset>, LogUpdateCommand>();
     }

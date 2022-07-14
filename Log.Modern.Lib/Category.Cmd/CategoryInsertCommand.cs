@@ -6,7 +6,7 @@ using Serilog;
 namespace Log.Modern.Lib;
 
 public class CategoryInsertCommand
-    : InsertCommand<ILogUnitOfWork, Data.Category, CategoryArg>
+    : InsertCommand<ILogUnitOfWork, Data.Category, CategoryInsertArgs>
 {
     public CategoryInsertCommand(
         ILogUnitOfWork unitOfWork

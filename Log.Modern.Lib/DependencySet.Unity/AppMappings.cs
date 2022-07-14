@@ -19,12 +19,12 @@ public class AppMappings
         c =>
         {
             c.CreateMap<PlaceArg, Place>();
-            c.CreateMap<CategoryArg, Category>();
+            c.CreateMap<CategoryInsertArgs, Category>();
             c.CreateMap<TaskArg, Task>();
             c.CreateMap<LogInsertArgs, LogModel>();
 
             c.CreateMap<PlaceArgUpdate, PlaceUpdate>();
-            c.CreateMap<CategoryArgUpdate, CategoryUpdate>();
+            c.CreateMap<CategoryUpdateArgs, CategoryUpdate>();
             c.CreateMap<TaskArgUpdate, TaskUpdate>();
             c.CreateMap<LogArgUpdateReset, LogUpdate>();
         });

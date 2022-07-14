@@ -7,7 +7,7 @@ using Serilog;
 namespace Log.Modern.Lib;
 
 public class CategoryReadCommand 
-    : ReadCommand<ILogUnitOfWork, Data.Category, CategoryArgFilter>
+    : ReadCommand<ILogUnitOfWork, Data.Category, CategoryFilterArgs>
 {
     public CategoryReadCommand(
         ILogUnitOfWork unitOfWork
@@ -18,6 +18,6 @@ public class CategoryReadCommand
     {
     }
 
-    protected override List<Data.Category> Get(CategoryArgFilter model) =>
+    protected override List<Data.Category> Get(CategoryFilterArgs model) =>
         UnitOfWork.Category.Get().ToList();
 }

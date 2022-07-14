@@ -1,6 +1,6 @@
 namespace Log.Modern.Lib;
 
-public class CategoryArg
+public class CategoryInsertArgs
     : ModelAInsertArgs
 {
     

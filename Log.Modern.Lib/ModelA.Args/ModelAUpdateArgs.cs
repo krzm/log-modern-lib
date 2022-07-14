@@ -9,6 +9,8 @@ public abstract class  ModelAUpdateArgs
     , IArgumentModel
     , IId
 {
+    protected const string UpdateError = "You must supply Name or Description";
+
     [Operand(
         "id")
         , Required

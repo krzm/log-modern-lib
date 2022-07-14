@@ -6,7 +6,7 @@ using Serilog;
 namespace Log.Modern.Lib;
 
 public class CategoryUpdateCommand
-    : UpdateCommand<ILogUnitOfWork, Data.Category, CategoryArgUpdate, Data.CategoryUpdate>
+    : UpdateCommand<ILogUnitOfWork, Data.Category, CategoryUpdateArgs, Data.CategoryUpdate>
 {
     public CategoryUpdateCommand(
         ILogUnitOfWork unitOfWork

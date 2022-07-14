@@ -2,6 +2,7 @@
 
 namespace Log.Modern.Lib;
 
-public class CategoryArgFilter : IArgumentModel
+public class CategoryFilterArgs
+    : IArgumentModel
 {
 }
