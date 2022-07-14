@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using CommandDotNet;
+using ModelHelper;
 
 namespace Log.Modern.Lib;
 
-public class LogFilterArgs 
-    : IArgumentModel
+public class LogFilterArgs
+    : Model
+    , IArgumentModel
 {
-    private const string IdError = "Id must be greater than zero";
-
     [Option(
         shortName: 's'
         , longName: "start")]
@@ -16,13 +16,13 @@ public class LogFilterArgs
     [Option(
         shortName: 'c'
         , longName: "category")
-        , Range(1, int.MaxValue, ErrorMessage = IdError)]
+        , Range(IdMin, IdMax, ErrorMessage = IdError)]
     public int? CategoryId { get; set; }
 
     [Option(
         shortName: 't'
         , longName: "task")
-    , Range(1, int.MaxValue, ErrorMessage = IdError)]
+    , Range(IdMin, IdMax, ErrorMessage = IdError)]
     public int? TaskId { get; set; }
 
     [Option(longName: "todo")]

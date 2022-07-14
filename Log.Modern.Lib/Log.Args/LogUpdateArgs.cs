@@ -2,28 +2,35 @@
 using CommandDotNet;
 using DotNetExtension;
 using ModelHelper;
+using ALog = Log.Data.LogModel;
 
 namespace Log.Modern.Lib;
 
 [AtLeastOneProperty(
-    "TaskId", "Start", "End", "Description", "PlaceId", "TimeTicks"
-    , "ResetStart", "ResetEnd"
-    , ErrorMessage = "You must supply TaskId or Start or End or Description or PlaceId or TimeTicks")]
-public class LogArgUpdate 
+    nameof(ALog.TaskId)
+    , nameof(ALog.Start)
+    , nameof(ALog.End)
+    , nameof(ALog.Description)
+    , nameof(ALog.PlaceId)
+    , nameof(ALog.TimeTicks)
+    , ErrorMessage = UpdateError)]
+public class LogUpdateArgs 
     : Model
     , IArgumentModel
     , IId
 {
+    private const string UpdateError = "You must supply TaskId or Start or End or Description or PlaceId or TimeTicks";
+
     [Operand(
         "id")
         , Required
-        , Range(1, int.MaxValue, ErrorMessage = IdError)]
+        , Range(IdMin, IdMax, ErrorMessage = IdError)]
     public int Id { get; set; }
 
     [Option(
         't'
         , "taskId")
-        , Range(1, int.MaxValue, ErrorMessage = IdError)]
+        , Range(IdMin, IdMax, ErrorMessage = IdError)]
     public int? TaskId { get; set; }
 
     [Option(
@@ -38,13 +45,14 @@ public class LogArgUpdate
 
     [Option(
         'd'
-        , "description")]
+        , "description")
+        , MaxLength(DescriptionMax)]
     public string? Description { get; set; }
 
     [Option(
         'p'
         , "placeId")
-        , Range(1, int.MaxValue, ErrorMessage = IdError)]
+        , Range(IdMin, IdMax, ErrorMessage = IdError)]
     public int? PlaceId { get; set; }
 
     [Option(

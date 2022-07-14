@@ -4,7 +4,7 @@ using Log.Data;
 namespace Log.Modern.Lib;
 
 public class LogFilter 
-    : IFilterFactory<Data.LogModel, LogFilterArgs>
+    : IFilterFactory<LogModel, LogFilterArgs>
 {
     private LogFilterArgs? filterArgs;
     private DateTime dateFilter;
@@ -36,7 +36,7 @@ public class LogFilter
         }
     }
 
-    public Expression<Func<Data.LogModel, bool>>? GetFilter(
+    public Expression<Func<LogModel, bool>>? GetFilter(
         LogFilterArgs filterArgs)
     {
         SetFilter(filterArgs);

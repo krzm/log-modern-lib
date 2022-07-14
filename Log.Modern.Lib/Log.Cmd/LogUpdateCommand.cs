@@ -6,7 +6,7 @@ using Serilog;
 namespace Log.Modern.Lib;
 
 public class LogUpdateCommand
-    : UpdateCommand<ILogUnitOfWork, LogModel, LogArgUpdateReset, Data.LogUpdate>
+    : UpdateCommand<ILogUnitOfWork, LogModel, LogUpdateResetArgs, Data.LogUpdate>
 {
     public LogUpdateCommand(
         ILogUnitOfWork unitOfWork

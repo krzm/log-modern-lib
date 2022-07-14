@@ -1,10 +1,17 @@
 using CommandDotNet;
+using DotNetExtension;
 
 namespace Log.Modern.Lib;
 
-public class LogArgUpdateToNow
-    : LogArgUpdate
+[AtLeastOneProperty(
+    nameof(EndNow)
+    , nameof(StartNow)
+    , ErrorMessage = UpdateError)]
+public class LogUpdateToNowArgs
+    : LogUpdateArgs
 {
+    private const string UpdateError = "You must supply EndNow or StartNow";
+
     private bool? endNow;
     private bool? startNow;
 

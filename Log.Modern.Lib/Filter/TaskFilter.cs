@@ -1,11 +1,12 @@
 using System.Linq.Expressions;
+using Task = Log.Data.Task;
 
 namespace Log.Modern.Lib;
 
 public class TaskFilter 
-    : IFilterFactory<Data.Task, TaskFilterArgs>
+    : IFilterFactory<Task, TaskFilterArgs>
 {
-    public Expression<Func<Data.Task, bool>>? GetFilter(
+    public Expression<Func<Task, bool>>? GetFilter(
         TaskFilterArgs filter)
     {
         if(filter.CategoryId.HasValue 

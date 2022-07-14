@@ -26,6 +26,6 @@ public class AppMappings
             c.CreateMap<PlaceUpdateArgs, PlaceUpdate>();
             c.CreateMap<CategoryUpdateArgs, CategoryUpdate>();
             c.CreateMap<TaskUpdateArgs, TaskUpdate>();
-            c.CreateMap<LogArgUpdateReset, LogUpdate>();
+            c.CreateMap<LogUpdateResetArgs, LogUpdate>();
         });
 }

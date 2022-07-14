@@ -45,7 +45,7 @@ public class AppCommands
             .RegisterSingleton<IUpdateCommand<PlaceUpdateArgs>, PlaceUpdateCommand>()
             .RegisterSingleton<IUpdateCommand<CategoryUpdateArgs>, CategoryUpdateCommand>()
             .RegisterSingleton<IUpdateCommand<TaskUpdateArgs>, TaskUpdateCommand>()
-            .RegisterSingleton<IUpdateCommand<LogArgUpdateReset>, LogUpdateCommand>();
+            .RegisterSingleton<IUpdateCommand<LogUpdateResetArgs>, LogUpdateCommand>();
     }
 
     private void RegisterDeleteCommands()
