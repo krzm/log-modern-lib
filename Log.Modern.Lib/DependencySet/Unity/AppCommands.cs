@@ -36,7 +36,7 @@ public class AppCommands
             .RegisterSingleton<IInsertCommand<PlaceArg>, PlaceInsertCommand>()
             .RegisterSingleton<IInsertCommand<CategoryArg>, CategoryInsertCommand>()
             .RegisterSingleton<IInsertCommand<Lib.TaskArg>, TaskInsertCommand>()
-            .RegisterSingleton<IInsertCommand<Lib.LogArg>, LogInsertCommand>();
+            .RegisterSingleton<IInsertCommand<Lib.LogInsertArgs>, LogInsertCommand>();
     }
 
     private void RegisterUpdateCommands()

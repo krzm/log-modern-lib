@@ -21,7 +21,7 @@ public class AppMappings
             c.CreateMap<PlaceArg, Place>();
             c.CreateMap<CategoryArg, Category>();
             c.CreateMap<TaskArg, Task>();
-            c.CreateMap<LogArg, LogModel>();
+            c.CreateMap<LogInsertArgs, LogModel>();
 
             c.CreateMap<PlaceArgUpdate, PlaceUpdate>();
             c.CreateMap<CategoryArgUpdate, CategoryUpdate>();

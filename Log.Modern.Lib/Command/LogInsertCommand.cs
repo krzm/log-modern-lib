@@ -6,7 +6,7 @@ using Serilog;
 namespace Log.Modern.Lib;
 
 public class LogInsertCommand
-    : InsertCommand<ILogUnitOfWork, LogModel, LogArg>
+    : InsertCommand<ILogUnitOfWork, LogModel, LogInsertArgs>
 {
     public LogInsertCommand(
         ILogUnitOfWork unitOfWork

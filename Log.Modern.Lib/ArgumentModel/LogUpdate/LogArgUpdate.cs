@@ -10,11 +10,10 @@ namespace Log.Modern.Lib;
     , "ResetStart", "ResetEnd"
     , ErrorMessage = "You must supply TaskId or Start or End or Description or PlaceId or TimeTicks")]
 public class LogArgUpdate 
-    : IArgumentModel
-        , IId
+    : Model
+    , IArgumentModel
+    , IId
 {
-    private const string IdError = "Id must be greater than zero";
-
     [Operand(
         "id")
         , Required

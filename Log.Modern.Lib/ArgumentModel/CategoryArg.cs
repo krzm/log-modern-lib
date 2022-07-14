@@ -1,6 +1,7 @@
 namespace Log.Modern.Lib;
 
-public class CategoryArg : ModelAArg
+public class CategoryArg
+    : ModelAArg
 {
     
 }
