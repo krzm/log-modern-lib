@@ -13,13 +13,20 @@ namespace Log.Modern.Lib;
     , nameof(ALog.Description)
     , nameof(ALog.PlaceId)
     , nameof(ALog.TimeTicks)
+    , "EndNow"
+    , "StartNow"
+    , "ResetStart"
+    , "ResetEnd"
     , ErrorMessage = UpdateError)]
 public class LogUpdateArgs 
     : Model
     , IArgumentModel
     , IId
 {
-    private const string UpdateError = "You must supply TaskId or Start or End or Description or PlaceId or TimeTicks";
+    private const string UpdateError = 
+        "You must supply TaskId or Start or End or" 
+        + "Description or PlaceId or TimeTicks"
+        + "or EndNow or StartNow or ResetStart or ResetEnd";
 
     [Operand(
         "id")
